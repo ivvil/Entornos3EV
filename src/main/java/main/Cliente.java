@@ -80,11 +80,9 @@ public class Cliente implements Comparable<Cliente> {
 		return true;// devuelvo el mensaje
 	}
 
-	/**
-     * Establece el valor del dni si este es válido.
-     * @param dni
-     *        El dni que probar y guardar.
-     * @return {@code true} si el dni es válido, guardándolo en el objeto, {@code false} si no es válido.
+    /**
+     * Prueba si el objeto es correcto comprobando él {@code nombre}, {@code apellidos} y él {@code dni_pas}.
+     * @return {@code true} si alguno de los campos comprobados son null, {@code false} si todos no son null.
      */
 	public boolean isNull2() {
 		if (nombre == null || apellidos == null || dni_pas == null) {
@@ -111,12 +109,11 @@ public class Cliente implements Comparable<Cliente> {
 		}
 		return true;
 	}
-	
+
     /**
-     * Establece el valor del dni si este es válido.
-     * @param dni
-     *        El dni que probar y guardar.
-     * @return {@code true} si el dni es válido, guardándolo en el objeto, {@code false} si no es válido.
+     * Compara el objeto actual con otro, comprobando que sus {@code apellidos} y {@code nombre} sean iguales.
+     * @param t El objeto a comparar.
+     * @return La comparación lexicográfica de los apellidos si no son iguales, y si lo son, la de los nombres.
      */
 	public int compareTo(Cliente t) {
 		if (apellidos.compareToIgnoreCase(t.getApellidos()) == 0) {

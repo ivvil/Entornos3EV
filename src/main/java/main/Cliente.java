@@ -39,6 +39,12 @@ public class Cliente implements Comparable<Cliente> {
 		return dni_pas;
 	}
 
+	/**
+     * Establece el valor del dni si este es válido.
+     * @param dni
+     *        El dni que probar y guardar.
+     * @return {@code true} si el dni es válido, guardándolo en el objeto, {@code false} si no es válido.
+     */
 	public boolean setDni_pas(String dni) {
 		final String LETRAS = "TRWAGMYFPDXBNJZSQVHLCKE";// Letras ordenadas de la última posición del dni
 		final String NUMEROS = "0123456789";// Números
@@ -74,6 +80,12 @@ public class Cliente implements Comparable<Cliente> {
 		return true;// devuelvo el mensaje
 	}
 
+	/**
+     * Establece el valor del dni si este es válido.
+     * @param dni
+     *        El dni que probar y guardar.
+     * @return {@code true} si el dni es válido, guardándolo en el objeto, {@code false} si no es válido.
+     */
 	public boolean isNull2() {
 		if (nombre == null || apellidos == null || dni_pas == null) {
 			return true;
@@ -99,7 +111,13 @@ public class Cliente implements Comparable<Cliente> {
 		}
 		return true;
 	}
-
+	
+    /**
+     * Establece el valor del dni si este es válido.
+     * @param dni
+     *        El dni que probar y guardar.
+     * @return {@code true} si el dni es válido, guardándolo en el objeto, {@code false} si no es válido.
+     */
 	public int compareTo(Cliente t) {
 		if (apellidos.compareToIgnoreCase(t.getApellidos()) == 0) {
 			return nombre.compareToIgnoreCase(t.getNombre());

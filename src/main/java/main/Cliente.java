@@ -40,10 +40,10 @@ public class Cliente implements Comparable<Cliente> {
 	}
 
 	public boolean setDni_pas(String dni) {
-		final String LETRAS = "TRWAGMYFPDXBNJZSQVHLCKE";// Letras ordenadas de la última posición del dni
-		final String NUMEROS = "0123456789";// Números
-		int n = 0;// Número convertido a partir del número en String
-		String numero = "";// Para tratar la parte numérica
+		final String LETRAS = "TRWAGMYFPDXBNJZSQVHLCKE";// Letras ordenadas de la Ãºltima posiciÃ³n del dni
+		final String NUMEROS = "0123456789";// NÃºmeros
+		int n = 0;// NÃºmero convertido a partir del nÃºmero en String
+		String numero = "";// Para tratar la parte numÃ©rica
 		if (dni == null || dni.length() != 9) {// comprueba la longitud del dni
 			return false;
 		}
@@ -51,10 +51,10 @@ public class Cliente implements Comparable<Cliente> {
 		if (!dni.matches("[0-9XYZxyz][0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKE]")) {
 			return false;
 		}
-		if (NUMEROS.contains(dni.substring(0, 1))) {// Creo el número para hacer la validación de la letra
+		if (NUMEROS.contains(dni.substring(0, 1))) {// Creo el nÃºmero para hacer la validaciÃ³n de la letra
 			numero = dni.substring(0, 8);// Esto para el dni
 		} else {// Esto para el NIE
-			switch (dni.substring(0, 1)) {// asigno primera posición nuérica en función de XYZ
+			switch (dni.substring(0, 1)) {// asigno primera posiciÃ³n nuÃ©rica en funciÃ³n de XYZ
 			case "X":
 				numero = dni.substring(1, 8);
 				break;

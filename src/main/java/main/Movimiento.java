@@ -58,7 +58,7 @@ public class Movimiento implements Comparable<Movimiento> {
 
 	public String todoMov() {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		return "Movimiento " + numeroMovimiento + "  número de cuenta= " + cuenta + ", fecha="
+		return "Movimiento " + numeroMovimiento + "  nÃºmero de cuenta= " + cuenta + ", fecha="
 				+ sdf.format(fecha.getTime()) + (ingresa_saca ? "          " : " -") + String.format("%10.2f", importe);
 	}
 

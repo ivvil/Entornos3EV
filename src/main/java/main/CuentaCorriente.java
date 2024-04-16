@@ -27,20 +27,20 @@ public class CuentaCorriente implements Comparable<CuentaCorriente> {
 
 	public String agregaCliente(Cliente cliente) {
 		if (cliente == null)
-			return "El cliente est� a null)";
+			return "El cliente está a null)";
 		if (clientes.contains(cliente))
-			return "El cliente ya est� en la cuenta";
+			return "El cliente ya está en la cuenta";
 		clientes.add(cliente);
-		return "Cliente a�adido correctamente";
+		return "Cliente añadido correctamente";
 	}
 
 	public String quitaCliente(Cliente cliente) {
 		if (cliente == null)
-			return "El cliente est� a null)";
+			return "El cliente está a null)";
 		if (!clientes.contains(cliente))
-			return "El cliente no est� en la cuenta";
+			return "El cliente no está en la cuenta";
 		if (clientes.size() == 1)
-			return "Es el �nico cliente de la cuenta. No se puede eliminar";
+			return "Es el único cliente de la cuenta. No se puede eliminar";
 		clientes.remove(cliente);
 		return "Cliente eliminado correctamente";
 	}
@@ -63,7 +63,7 @@ public class CuentaCorriente implements Comparable<CuentaCorriente> {
 		for (Cliente c : clientes) {
 			texto += c.toString() + "/";
 		}
-		return "main.CuentaCorriente n�mero de cuenta=" + numCuenta + ", saldo=" + String.format("%9.2f", saldo)
+		return "CuentaCorriente número de cuenta=" + numCuenta + ", saldo=" + String.format("%9.2f", saldo)
 				+ "\n clientes:=" + texto;
 	}
 
@@ -72,12 +72,16 @@ public class CuentaCorriente implements Comparable<CuentaCorriente> {
 	}
 
 	public Movimiento ingresar(Calendar fecha, double importe) throws ObjetoErroneo {
-		Movimiento m = null;
-		if (importe >= 0.0) {
-			m = new Movimiento(fecha, importe, true, this);
-			saldo = saldo + importe;
-		}
-		return m;
+        // Crear un movimiento nulo
+        Movimiento m = null;
+        // En el caso de que el importe sea mayor
+        if (importe >= 0.0) {
+            // Instanciar un nuevo movimiento con la fecha y el importe introducida por parametro
+            m = new Movimiento(fecha, importe, true, this);
+            // Una vez instanciado añadir el importe al saldo de la cuenta
+            saldo = saldo + importe;
+        }
+        return m;
 	}
 
 	public Movimiento retirar(Calendar fecha, double importe) throws ObjetoErroneo {

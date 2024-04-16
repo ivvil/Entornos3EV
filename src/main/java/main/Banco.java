@@ -13,7 +13,7 @@ public class Banco {
 		List<Cliente> clientes = new ArrayList<>();
 		List<CuentaCorriente> cuentas = new ArrayList<>();
 		List<Movimiento> movimientos = new ArrayList<>();
-		final String[] MENU = { "Salir", "Crear cliente", "Crear cuenta", "Añadir cliente a una cuenta",
+		final String[] MENU = { "Salir", "Crear cliente", "Crear cuenta", "AÃ±adir cliente a una cuenta",
 				"Quitar cliente de una cuenta", "Ingresar en cuenta", "Sacar de una cuenta", "Cuentas de un cliente",
 				"Movimientos entre fechas", "Movimientos de una cuenta", "Listado de cuentas" };
 		Comparator<CuentaCorriente> porSaldo = (a, b) -> a.getSaldo().compareTo(b.getSaldo());
@@ -39,7 +39,7 @@ public class Banco {
 					else
 						clientes.add(c);
 				} catch (ObjetoErroneo e2) {
-					System.out.println("Datos erróneos al crear el cliente");
+					System.out.println("Datos errÃ³neos al crear el cliente");
 				}
 				break;
 			case 2:
@@ -53,7 +53,7 @@ public class Banco {
 				break;
 			case 3:
 				cc = selecciona(cuentas, "una cuenta corriente");
-				c = selecciona(clientes, "un cliente a añadir");
+				c = selecciona(clientes, "un cliente a aÃ±adir");
 				if (cc != null)
 					System.out.println(cc.agregaCliente(c));
 				break;
@@ -144,7 +144,7 @@ public class Banco {
 	public static <T> T selecciona(List<T> lista, String texto) {
 		int nele = -1;
 		if (lista.size() == 0) {
-			System.out.println("Lista vacía");
+			System.out.println("Lista vacÃ­a");
 			return null;
 		}
 		for (int i = 0; i < lista.size(); i++) {

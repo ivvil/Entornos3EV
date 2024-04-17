@@ -11,12 +11,11 @@ public class CuentaCorriente implements Comparable<CuentaCorriente> {
 	private static Integer numSiguiente = 100;
 
     /**
-     * Construye un nuevo objeto {@link CuentaCorriente} con un numero de cuenta autogenerado, el saldo a 0
+     * Construye un nuevo objeto {@link CuentaCorriente} con un número de cuenta autogenerado, el saldo a 0
      * y una lista de clientes con el cliente introducido por el parametro.
-     *
      * Comprueba que el {@link Cliente} introducido por parametro no sea un objeto nulo.
      * @param cliente Cliente propietario de la cuenta
-     * @throws ObjetoErroneo
+     * @throws ObjetoErroneo en caso de que el cliente sea {@code null}
      */
 	public CuentaCorriente(Cliente cliente) throws ObjetoErroneo {
         // Formatea una cadena de texto dado el atributo estático de numSiguiente
@@ -41,18 +40,15 @@ public class CuentaCorriente implements Comparable<CuentaCorriente> {
     /**
      * Devuelve el resultado de {@code ArrayList.contains} dado el {@link Cliente}.
      * @param cliente Cliente a buscar
-     * @return Verdadero o falso, dependiendo de si existe en la lista
      */
 	public boolean buscaCliente(Cliente cliente) {
 		return clientes.contains(cliente);
 	}
 
-
     /**
      * Dado un cliente se añade a la lista de clientes.
-     * Comprueba que el cliente no sea nulo y que no este en la lista.
+     * Comprueba que el {@link Cliente} no sea nulo y que no este en la lista.
      * @param cliente Cliente a añadir
-     * @return Devuelve una cadena de texto indicando el mensaje de estado
      */
 	public String agregaCliente(Cliente cliente) {
         // Comprobar que el cliente insertado por parametro no sea un cliente nulo
@@ -72,6 +68,12 @@ public class CuentaCorriente implements Comparable<CuentaCorriente> {
 		return "Cliente añadido correctamente";
 	}
 
+    /**
+     * Elimina el cliente de la lista de clientes.
+     * Comprueba que el {@link Cliente} introducido por parametro exista en la cuenta,
+     * no sea nulo y que en la cuenta haya más de 1 cliente.
+     * @param cliente Cliente a eliminar.
+     */
 	public String quitaCliente(Cliente cliente) {
         // Comprobar que el cliente insertado por parametro no sea un cliente nulo
         if (cliente == null)
@@ -94,18 +96,30 @@ public class CuentaCorriente implements Comparable<CuentaCorriente> {
 		return "Cliente eliminado correctamente";
 	}
 
+    /**
+     * Devuelve un {@link String} conteniendo el número de cuenta.
+     */
 	public String getNumCuenta() {
 		return numCuenta;
 	}
 
+    /**
+     * Devuelve un {@link Double} conteniendo el saldo disponible de una cuenta
+     */
 	public Double getSaldo() {
 		return saldo;
 	}
 
+    /**
+     * Devuelve un {@link Integer} conteniendo el número para generar automaticamente el número de cuenta
+     */
 	public static Integer getNumSiguiente() {
 		return numSiguiente;
 	}
 
+    /**
+     * Devuelve un {@link String} conteniendo los atributos del objeto en una cadena de texto.
+     */
 	@Override
 	public String toString() {
 		String texto = "";
@@ -116,10 +130,20 @@ public class CuentaCorriente implements Comparable<CuentaCorriente> {
 				+ "\n clientes:=" + texto;
 	}
 
+    /**
+     * Devuelve un {@link String} que contiene el número de cuenta y el saldo que contiene
+     */
 	public String visualiza() {
 		return numCuenta + " : saldo = " + saldo;
 	}
 
+    /**
+     * Dado una cantidad de dinero la ingresa en la cuenta bancaria y devuelve un movimiento indicando la fecha cuando se ha hecho.
+     * @param fecha Fecha del movimiento.
+     * @param importe Importe a ingresar.
+     * @return {@code null} en el caso de que se hayan intruducido unos parametros invalidos y {@link Movimiento} en caso de que se introduzcan valores válidos.
+     * @throws ObjetoErroneo en caso de que algunos de los parametros sea incorreto.
+     */
 	public Movimiento ingresar(Calendar fecha, double importe) throws ObjetoErroneo {
         // Crear un movimiento nulo
         Movimiento m = null;
@@ -132,15 +156,16 @@ public class CuentaCorriente implements Comparable<CuentaCorriente> {
             saldo = saldo + importe;
         }
 
+        // Devolver el movimiento creado
         return m;
 	}
 
     /**
-     * Dado la fecha y el importe crea un movimiento en caso de que los parametros introducidos sean valores adecueandos para la CuentaCorriente
-     * @param fecha
-     * @param importe
-     * @return {@code null} en el caso de que se hayan intruducido unos parametros invalidos y {@link Movimiento} en caso de que se introduzcan valores válidos
-     * @throws ObjetoErroneo
+     * Dado la fecha y el importe crea un movimiento en caso de que los parametros introducidos sean valores adecueandos para la CuentaCorriente.
+     * @param fecha Fecha del movimiento.
+     * @param importe Importe a retrirar.
+     * @return {@code null} en el caso de que se hayan intruducido unos parametros invalidos y {@link Movimiento} en caso de que se introduzcan valores válidos.
+     * @throws ObjetoErroneo en caso de que algunos de los parametros sea incorreto.
      */
 	public Movimiento retirar(Calendar fecha, double importe) throws ObjetoErroneo {
         // Creacion del movimiento nulo
@@ -154,9 +179,14 @@ public class CuentaCorriente implements Comparable<CuentaCorriente> {
 			saldo = saldo - importe;
 		}
 
+        // Devolver el movimiento creado
 		return m;
 	}
 
+    /**
+     * Comparara el objeto introducido por parametro con {@link CuentaCorriente}
+     * @return Verdadero en caso de que el parametro sea equivalente a {@link CuentaCorriente}
+     */
 	@Override
 	public boolean equals(Object obj) {
         // Comprueba si es examente el mismo objeto
@@ -183,9 +213,16 @@ public class CuentaCorriente implements Comparable<CuentaCorriente> {
 		return true;
 	}
 
+    /**
+     * Compara el parametro con este objeto
+     * @param o El objeto a comparar
+     * @return 0 si el objeto es igual,
+     * un número positivo en caso de que el objeto comparado sea mayor
+     * o un número negativo en caso de que el objeto comparado sea menor.
+     */
 	@Override
 	public int compareTo(CuentaCorriente o) {
-		// TODO Auto-generated method stub
+		// Llamada a compareTo de Integer para comparar el numCuenta
 		return numCuenta.compareTo(o.getNumCuenta());
 	}
 

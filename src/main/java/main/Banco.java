@@ -13,8 +13,8 @@ public class Banco {
 		List<CuentaCorriente> cuentas = new ArrayList<>();
 		List<Movimiento> movimientos = new ArrayList<>();
 		final String[] MENU = { "Salir", "Crear cliente", "Crear cuenta", "Añadir cliente a una cuenta",
-				"Quitar cliente de una cuenta", "Ingresar en cuenta", "Sacar de una cuenta", "Cuentas de un cliente",
-				"Movimientos entre fechas", "Movimientos de una cuenta", "Listado de cuentas" };
+								"Quitar cliente de una cuenta", "Ingresar en cuenta", "Sacar de una cuenta", "Cuentas de un cliente",
+								"Movimientos entre fechas", "Movimientos de una cuenta", "Listado de cuentas" };
 		Comparator<CuentaCorriente> porSaldo = (a, b) -> a.getSaldo().compareTo(b.getSaldo());
 		Comparator<Movimiento> porFecha = (a, b) -> a.getFecha().compareTo(b.getFecha());
 		Comparator<Movimiento> porCuenta = (a, b) -> a.getCuenta().compareTo(b.getCuenta());
@@ -160,7 +160,7 @@ public class Banco {
 		dia = Leer.cadena("^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", texto);
 		String[] d = dia.split("[\\/|-]");
 		Calendar fecha = new GregorianCalendar(Integer.parseInt(d[2]), Integer.parseInt(d[1]) - 1,
-				Integer.parseInt(d[0]));
+											   Integer.parseInt(d[0]));
 		return fecha;
 	}
 

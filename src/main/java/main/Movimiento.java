@@ -222,8 +222,12 @@ Aliquam erat volutpat.  Nunc eleifend leo vitae magna.  In id erat non orci comm
 
 	/**
 	 * Construye un nuevo objeto {@link Movimiento}, probando que ni la {@code fecha} ni la {@code cuenta}
-	 * sean nulos y que {}
-	 *
+	 * sean nulos y que {@code importe} no sea menor o igual a 0.
+	 * @param fecha Fecha del movimiento.
+	 * @param importe Importe de la transacción
+	 * @param ingresa_saca Si es {@code true}, es un ingreso, si es {@code false} es un "sacamiento".
+	 * @param cuenta {@link CuentaCorriente} a la que aplicar la transacción.
+	 * @throws ObjetoErroneo en caso de {@code fecha}, {@code importe} o {@code ingresa_saca} sean valores erroneos.
 	 */
 	public Movimiento(Calendar fecha, double importe, boolean ingresa_saca, CuentaCorriente cuenta)
 			throws ObjetoErroneo {

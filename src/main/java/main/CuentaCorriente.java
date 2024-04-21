@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+
+/**
+ * Guarda información sobre la cuenta corriente del cliente.
+ */
 public class CuentaCorriente implements Comparable<CuentaCorriente> {
 	private String numCuenta;
 	private Double saldo;
@@ -15,7 +19,7 @@ public class CuentaCorriente implements Comparable<CuentaCorriente> {
      * y una lista de clientes con el cliente introducido por el parametro.
      * Comprueba que el {@link Cliente} introducido por parametro no sea un objeto nulo.
      * @param cliente Cliente propietario de la cuenta
-     * @throws ObjetoErroneo en caso de que el cliente sea {@code null}
+     * @throws ObjetoErroneo en caso de que el cliente sea {@code null}.
      */
 	public CuentaCorriente(Cliente cliente) throws ObjetoErroneo {
         // Formatea una cadena de texto dado el atributo estático de numSiguiente

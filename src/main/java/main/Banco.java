@@ -9,7 +9,6 @@ import java.util.List;
 public class Banco {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		List<Cliente> clientes = new ArrayList<>();
 		List<CuentaCorriente> cuentas = new ArrayList<>();
 		List<Movimiento> movimientos = new ArrayList<>();

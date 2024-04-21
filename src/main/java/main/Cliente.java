@@ -1,48 +1,77 @@
 package main;
 
+/**
+ * Guarda información sobre el cliente
+ */
 public class Cliente implements Comparable<Cliente> {
 	private String nombre;
 	private String apellidos;
 	private String dni_pas;
 
+	/**
+	 * Construye un nuevo objeto {@link Cliente}, probando que el {@code nombre}, {@code apellidos} y
+	 * el {@code dni_pas} no sean nulos.
+	 * @param nombre Nombre del cliente.
+	 * @param apellidos Apellidos del cliente.
+	 * @param dni_pas DNI del cliente.
+	 * @throws ObjetoErroneo en caso de que algun campo sea {@code null}.
+	 */
 	public Cliente(String nombre, String apellidos, String dni_pas) throws ObjetoErroneo {
 
 		setNombre(nombre);
 		setApellidos(apellidos);
 		setDni_pas(dni_pas);
-		if (isNull2()) {
+		if (isNull2()) {		// Prueba si alguno de los campos son nulos
 			throw new ObjetoErroneo();
 		}
 	}
 
+	/**
+	 * Devuelve un {@link String} conteniendo el nombre del {@link Cliente}.
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Cambia el nombre del {@link Cliente} a el especificado.
+	 * Combrueba que no sea nulo o que este vacio.
+	 * @param nombre Nombre al que cambiar.
+	 */
 	public void setNombre(String nombre) {
-		if (nombre != null && nombre.trim().length() > 0) {
+		if (nombre != null && nombre.trim().length() > 0) { // Comprueba que el nombre sea una String valida
 			this.nombre = nombre;
 		}
 	}
 
+	/**
+	 * Devuelve un {@link String} conteniendo los apellidos del {@link Cliente}.
+	 */
 	public String getApellidos() {
 		return apellidos;
 	}
 
+	/**
+	 * Cambia los apellidos del {@link Cliente} a el especificado.
+	 * Combrueba que no sea nulo o que este vacio.
+	 * @param apellidos Apellidos al que cambiar.
+	 */
 	public void setApellidos(String apellidos) {
 		if (apellidos != null && apellidos.trim().length() > 0) {
 			this.apellidos = apellidos;
 		}
 	}
 
+	/**
+	 * Devuelve un {@link String} conteniendo el DNI del {@link Cliente}.
+	 */
 	public String getDni() {
 		return dni_pas;
 	}
 
 	/**
      * Establece el valor del dni si este es válido.
-     * @param dni
-     *        El dni que probar y guardar.
+     * @param dni El dni que probar y guardar.
      * @return {@code true} si el dni es válido, guardándolo en el objeto, {@code false} si no es válido.
      */
 	public boolean setDni_pas(String dni) {

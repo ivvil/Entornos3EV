@@ -6,28 +6,36 @@ import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+/**
+ * Clase Main
+ */
 public class Banco {
 
 	public static void main(String[] args) {
-		List<Cliente> clientes = new ArrayList<>();
+		List<Cliente> clientes = new ArrayList<>(); 
 		List<CuentaCorriente> cuentas = new ArrayList<>();
 		List<Movimiento> movimientos = new ArrayList<>();
+		
 		final String[] MENU = { "Salir", "Crear cliente", "Crear cuenta", "Añadir cliente a una cuenta",
 								"Quitar cliente de una cuenta", "Ingresar en cuenta", "Sacar de una cuenta", "Cuentas de un cliente",
 								"Movimientos entre fechas", "Movimientos de una cuenta", "Listado de cuentas" };
+
+		// Diferentes comparators para CuentaCorriente y Saldo
 		Comparator<CuentaCorriente> porSaldo = (a, b) -> a.getSaldo().compareTo(b.getSaldo());
 		Comparator<Movimiento> porFecha = (a, b) -> a.getFecha().compareTo(b.getFecha());
 		Comparator<Movimiento> porCuenta = (a, b) -> a.getCuenta().compareTo(b.getCuenta());
-		int opcion = -1;
+		
+		int opcion = -1;		// Inicializamos opcion a un número fuera de rango para que no ejecute ninguna opción.
 		Cliente c = null;
 		CuentaCorriente cc = null;
 		Movimiento m = null, mm = null;
 		double importe;
 		Calendar fecha, fecha1;
 		String nombre, apellidos, dni;
+		
 		while (opcion != 0) {
 			switch (opcion) {
-			case 1:
+			case 1:				// Crear cliente
 				nombre = Leer.cadena("Nombre del cliente");
 				apellidos = Leer.cadena("Apellidos del cliente");
 				dni = Leer.cadena("Dni del cliente");
@@ -41,7 +49,7 @@ public class Banco {
 					System.out.println("Datos erróneos al crear el cliente");
 				}
 				break;
-			case 2:
+			case 2:				// Crear cuenta
 				c = selecciona(clientes, "un cliente para abrir la cuenta");
 				try {
 					cc = new CuentaCorriente(c);
@@ -50,19 +58,19 @@ public class Banco {
 					System.out.println("La cuenta no se pueda abrir");
 				}
 				break;
-			case 3:
+			case 3:				// Añadir cliente a una cuenta
 				cc = selecciona(cuentas, "una cuenta corriente");
 				c = selecciona(clientes, "un cliente a añadir");
 				if (cc != null)
 					System.out.println(cc.agregaCliente(c));
 				break;
-			case 4:
+			case 4:				// Quitar cliente de una cuenta
 				cc = selecciona(cuentas, "una cuenta corriente");
 				c = selecciona(clientes, "un cliente a eliminar");
 				if (cc != null)
 					System.out.println(cc.quitaCliente(c));
 				break;
-			case 5:
+			case 5:				// Ingresae en cuenta
 				cc = selecciona(cuentas, "una cuenta corriente donde ingresar");
 				if (cc == null)
 					break;
@@ -80,7 +88,7 @@ public class Banco {
 					System.out.println("Hay movimientos posteriores al propuesto");
 				}
 				break;
-			case 6:
+			case 6:				// Sacar de una cuenta
 				cc = selecciona(cuentas, "una cuenta corriente de donde sacar");
 				if (cc == null)
 					break;
@@ -98,7 +106,7 @@ public class Banco {
 					System.out.println("No hay saldo para la retirada o hay movimientos posteriores al propuesto");
 				}
 				break;
-			case 7:
+			case 7:				// Cuentas de un cliente
 				c = selecciona(clientes, "un cliente para localizar sus cuentas");
 				cuentas.sort(porSaldo.reversed());
 				for (CuentaCorriente ccor : cuentas) {
@@ -107,7 +115,7 @@ public class Banco {
 					}
 				}
 				break;
-			case 8:
+			case 8:				// Movimientos entre fechas
 				fecha = leeFecha("Fecha desde:");
 				fecha.add(Calendar.DAY_OF_MONTH, -1);
 				fecha1 = leeFecha("Fecha hasta");
@@ -123,7 +131,7 @@ public class Banco {
 					}
 				}
 				break;
-			case 9:
+			case 9:				// Novimientos de una cuenta
 				cc = selecciona(cuentas, "una cuenta corriente para ver sus movimientos");
 				System.out.println(cc);
 				for (Movimiento mov : movimientos) {
@@ -132,7 +140,7 @@ public class Banco {
 					}
 				}
 				break;
-			case 10:
+			case 10:			// Listado de cuentas
 				cuentas.forEach(System.out::println);
 				break;
 			}

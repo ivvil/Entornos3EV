@@ -11,6 +11,10 @@ import java.util.List;
  */
 public class Banco {
 
+	/**
+	 * Crea el menú de usuario (TUI)
+	 *
+	 */
 	public static void main(String[] args) {
 		List<Cliente> clientes = new ArrayList<>(); 
 		List<CuentaCorriente> cuentas = new ArrayList<>();
@@ -148,6 +152,13 @@ public class Banco {
 		}
 	}
 
+	/**
+	 * Forma interactiva de pedir al usuario que decida entre los valores de una lista.
+	 * Si la {@code lista} esta vacia, lo imprime al usuario, si no imprime la lista y pide que introduzca
+	 * un {@link Integer}, que sera interpretado como el indice de su selección.
+	 * @param lista Lista de valores que escoger.
+	 * @param texto Prompt que se enseña al usuario.
+	 */
 	public static <T> T selecciona(List<T> lista, String texto) {
 		int nele = -1;
 		if (lista.size() == 0) {
@@ -163,6 +174,10 @@ public class Banco {
 		return lista.get(nele);
 	}
 
+	/**
+	 * Devuelve un {@link Calendar} con la fecha especificada.
+	 * @param texto {@link String} conteniendo la fecha que se quiere procesar.
+	 */
 	public static Calendar leeFecha(String texto) {
 		String dia;
 		dia = Leer.cadena("^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$", texto);
@@ -172,6 +187,11 @@ public class Banco {
 		return fecha;
 	}
 
+	/**
+	 * Busca un {@link Movimiento} en una {@link List}
+	 * @param m Pajar
+	 * @param cc Aguja
+	 */
 	public static Movimiento buscaUltimo(List<Movimiento> m, CuentaCorriente cc) {
 		Movimiento mm = null;
 		for (Movimiento movimiento : m) {

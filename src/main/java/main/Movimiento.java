@@ -243,30 +243,49 @@ Aliquam erat volutpat.  Nunc eleifend leo vitae magna.  In id erat non orci comm
 		numSig++;
 	}
 
+	/**
+	 * Devuelve un {@link Calendar} conteniedo la fecha de la transacción.
+	 */
 	public Calendar getFecha() {
 		return fecha;
 	}
 
+	/**
+	 * Devuleve un {@link Double} con el impote de la transacción.
+	 */
 	public Double getImporte() {
 		return importe;
 	}
 
+	/**
+	 * Devuelve {@code true}, si es un ingreso, si es {@code false} es un "sacamiento".
+	 */
 	public Boolean getIngresa_saca() {
 		return ingresa_saca;
 	}
 
+	/**
+	 * Devulve la {@link CuentaCorriente} en la que se aplica la transacción.
+	 */
 	public CuentaCorriente getCuenta() {
 		return cuenta;
 	}
 
+	/**
+	 * Devuelve {@link Integer} que representa la transacción.
+	 */
 	public Integer getNumeroMovimiento() {
 		return numeroMovimiento;
 	}
 
+	/**
+	 * Devuelve {@link Integer} con el número total de transacciónes.
+	 */
 	public static int getNumSig() {
 		return numSig;
 	}
 
+	
 	@Override
 	public String toString() {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

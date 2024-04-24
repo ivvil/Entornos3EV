@@ -4,6 +4,11 @@ import java.util.Scanner;
 import java.util.regex.PatternSyntaxException;
 
 public class Leer {
+    /**
+     * Lee un número entero introducido por la consola
+     * @param texto Texto a mostrar en pantalla
+     * @return Número Entero
+     */
 	public static int entero(String texto) {
 		int valor;
 		String var;
@@ -19,6 +24,11 @@ public class Leer {
 		}
 	}
 
+    /**
+     * Leer una cadena de texto introducida por consola
+     * @param texto a mostrar por consola
+     * @return cadena de texto
+     */
 	public static String cadena(String texto) {
 		Scanner teclado = new Scanner(System.in);
 		String valor;
@@ -27,6 +37,12 @@ public class Leer {
 		return valor;
 	}
 
+    /**
+     * Lee una cadena de texto y comprueba que esta siga un patron usando una expresión regular
+     * @param regex Expresión regular a seguir
+     * @param texto Texto a mostrar por pantalla
+     * @return Cadena
+     */
 	public static String cadena(String regex, String texto) {
 		Scanner teclado = new Scanner(System.in);
 		String valor;
@@ -44,7 +60,12 @@ public class Leer {
 		}
 		return valor;
 	}
-	
+
+    /**
+     * Lee por consola el número real introducido
+     * @param texto a mostrar en la consola
+     * @return número real leido por consola
+     */
 	public static float real(String texto) {
 		float valor;
 		String var;
@@ -61,6 +82,11 @@ public class Leer {
 		
 	}
 
+    /**
+     * Lee por consola el double introducido
+     * @param texto a mostrar en la consola
+     * @return double leido por consola
+     */
 	public static double doble(String texto) {
 		double valor;
 		String var;
@@ -76,6 +102,11 @@ public class Leer {
 		}
 	}
 
+    /**
+     * Dado un array de cadenas de texto lo lee y muestra por pantalla la serie de opciones y lee la opción intruducida
+     * @param menu Vector de cadenas de texto conteniendo las opciones del menu.
+     * @return Número entero con la opción seleccionada
+     */
 	public static int menu(String[] menu) {
 		int opcion = -1;
 		for (int i = 1; i < menu.length; i++) {
